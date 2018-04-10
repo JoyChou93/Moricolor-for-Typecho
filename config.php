@@ -5,7 +5,7 @@
 //Pages -换页导航中间的三条杠！
 $GLOBALS['tools_Pages_if'] = 'off'; //是否开启自定义链接
 $GLOBALS['tools_Pages'] = array(
-	'{your_title}' => '{your_url}', 
+	'{your_title}' => '{your_url}',
 	'Moricolor' => 'https://github.com/txperl/Moricolor-for-Typecho'
 	);
 
@@ -18,7 +18,7 @@ $GLOBALS['bottomTools_page'] = 'off'; //页面
 $GLOBALS['bottomTools_search'] = 'on'; //搜索
 
 //主页
-$GLOBALS['index_QuickPreview'] = '1'; //每页默认显示 X 个快速预览
+$GLOBALS['index_QuickPreview'] = '0'; //每页默认显示 X 个快速预览
 $GLOBALS['index_QuickPreview_Img'] = 'off'; //文章预览是否显示图片
 
 //样式

@@ -4,7 +4,7 @@
  * 如同她的名字一样，给人以一种自然、恬静的文字阅读体验。
  * 本项目属于 ProjectNatureSimple
  * @package Moricolor
- * @author Trii Hsia 
+ * @author Trii Hsia
  * @version Chapter I (v1.3)
  * @link https://yumoe.com/
  */
@@ -17,8 +17,8 @@ $i=0;
 <div id="main" class="container">
   <div id="main-index" style="display: none;">
   <?php $totalpages=ceil($this->getTotal() / $this->parameter->pageSize); ?>
-  <?php if($this->is('index') && $this->_currentPage == 1){echo '<h4>記事</h4>';} ?>
-  <?php if($this->is('index') && $this->_currentPage != 1){echo '<h4>記事 · '.$this->_currentPage.' / '.$totalpages.'</h4>';} ?>
+  <?php if($this->is('index') && $this->_currentPage == 1){echo '<h4>Papers</h4>';} ?>
+  <?php if($this->is('index') && $this->_currentPage != 1){echo '<h4>Papers · '.$this->_currentPage.' / '.$totalpages.'</h4>';} ?>
 	<?php while($this->next()): ?>
     <?php
     require 'config.php';
@@ -60,9 +60,10 @@ $i=0;
   <div id="pagenav" class="text-center" style="display: none;">
     <ul class="pager">
       <li class="previous">
-        <?php 
-              $this->pageLink('<span><i class="fui-arrow-left"></i></span>','next');
-              if($this->is('index') && $this->_currentPage == $totalpages){echo '<a title="没有惹" data-toggle="tooltip"><span><i class="fui-arrow-left"></i></span></a>';}
+        <?php
+              // $this->pageLink('<span><i class="fui-arrow-left"></i></span>','next');
+              $this->pageLink('<span><i class="fui-arrow-left"></i></span>');
+              if($this->is('index') && $this->_currentPage == 1){echo '<a title="已经是第一页了" data-toggle="tooltip"><span><i class="fui-arrow-left"></i></span></a>';}
         ?>
       </li>
 
@@ -77,7 +78,7 @@ $i=0;
           <?php
             $pages=$GLOBALS['tools_Pages'];
             $titles=array_keys($GLOBALS['tools_Pages']);
-            for ($i=0; $i < count($pages); $i++) { 
+            for ($i=0; $i < count($pages); $i++) {
               echo '<li><a href="'.$pages[$titles[$i]].'">'.$titles[$i].'</a></li>';
             }
           ?>
@@ -91,9 +92,9 @@ $i=0;
     </li>
 
       <li class="next">
-        <?php 
-            $this->pageLink('<span><i class="fui-arrow-right"></i></span>');
-            if($this->is('index') && $this->_currentPage == 1){echo '<a title="没有惹" data-toggle="tooltip"><span><i class="fui-arrow-right"></i></span></a>';}
+        <?php
+            $this->pageLink('<span><i class="fui-arrow-right"></i></span>', 'next');
+            if($this->is('index') && $this->_currentPage == $totalpages){echo '<a title="已经是最后一页了" data-toggle="tooltip"><span><i class="fui-arrow-right"></i></span></a>';}
         ?>
       </li>
     </ul>
@@ -103,7 +104,7 @@ $i=0;
   <?php
   $ifrun=$GLOBALS['bottomTools'];
     if ($ifrun=='on') {
-      echo '<h6>(ฅ´ω`ฅ)</h6><small><ul>';
+      echo '<h6>Tips</h6><small><ul>';
       echo '<section class="bottomtool">';
       //
         //一言
@@ -114,7 +115,7 @@ $i=0;
         if ($GLOBALS['bottomTools_category']=='on') {
           echo '<span style="padding-right: 1px;">Category</span> · &nbsp;';
             $this->widget('Widget_Metas_Category_List')
-                ->parse('<a style="color:#95A5A6;" href="{permalink}"> &{name} </a>&nbsp; · &nbsp;');
+                ->parse('<a style="color:#95A5A6;" href="{permalink}"> {name} </a>&nbsp; · &nbsp;');
           echo '<br>';
         }
         //标签
